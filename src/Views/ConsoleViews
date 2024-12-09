@@ -1,27 +1,29 @@
-package views;
-import java.io.Console;
+package Views;
+
 import java.util.Scanner;
+
 public class ConsoleView {
-
     private Scanner scanner;
-    public ConsoleView(){
-        this.scanner =new scanner(System.in);
 
+    public ConsoleView() {
+        this.scanner = new Scanner(System.in);
     }
-    private void displayMenu(){
-        System.out.println(" ====Contact manager Menu==== ");
-        System.out.println("/t1. add Contact");
-        System.out.println("/t2. delet Contact");
-        System.out.println("/t3. search Contact");
-        System.out.println("/t4. print Contact");
-        System.out.println("/t5. exit");
-        System.out.println("Choose an option");
+
+    public void displayMenu() {
+        System.out.println("======= Menú Contacts =======");
+        System.out.println("1. Add contact");
+        System.out.println("2. Find contact");
+        System.out.println("3. Delete contact");
+        System.out.println("4. Print Contacts");
+        System.out.println("5. Exit");
     }
-    public String getImput(String prompt){
-        System.out.println("+ "+prompt);
-            return scanner.nextLine();
+
+    public String getInput(String prompt) {
+        System.out.print(prompt);
+        return scanner.nextLine();
     }
-    public void showMenssage(String menssage){
-        System.out.println(menssage);
+
+    public void showMessage(String message) {
+        System.out.println(message);
     }
 }

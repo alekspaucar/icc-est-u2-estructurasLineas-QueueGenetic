@@ -1,14 +1,15 @@
-package materia.models.models;
+package Models;
 
-public class Contact {
+public class Contact<T, U> {
     private T name;
     private U phone;
 
-    public Contact(T name, U phone){
+    public Contact(T name, U phone) {
         this.name = name;
-        this.phone=phone;
+        this.phone = phone;
     }
 
+    // Getters y Setters
     public T getName() {
         return name;
     }
@@ -27,7 +28,6 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "name: "+ name + "number: " + phone;
+        return "Name: " + name + ", Phone: " + phone;
     }
-    
 }

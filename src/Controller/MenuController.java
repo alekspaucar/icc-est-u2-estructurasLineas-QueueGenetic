@@ -1,57 +1,67 @@
+package Controllers;
 
-import java.io.Console;
-
-import materia.models.models.Contact;
-import views.ConsoleView;
+import Models.Contact; // Importamos la clase Contact
+import Views.ConsoleView;
 
 public class MenuController {
+    private ContactManager contactManager;
+    private ConsoleView consoleView;
 
+    public MenuController() {
+        this.contactManager = new ContactManager();
+        this.consoleView = new ConsoleView();
+    }
 
-public MenuController(){
-    this.consoleView = new MenuController();
-
-}
-public void showMenu(){
-    boolean exit= false;
-    while (exit) {
-        ConsoleView.displayMenu(){
-            string option = ConsoleView.getInput("");
+    public void showMenu() {
+        boolean exit = false;
+        while (!exit) { 
+            consoleView.displayMenu();
+            String option = consoleView.getInput("Choose the option: ");
+    
             switch (option) {
-                case "1":
+                case "1": // Agregar contacto
                     addContact();
                     break;
-                case "2":
+                case "2": // Buscar contacto
                     findContact();
                     break;
-                case "3":
+                case "3": // Eliminar contacto
                     deleteContact();
                     break;
-                case "4":
-                    printList();
+                case "4": // Mostrar lista
+                    contactManager.printList();
                     break;
-                case "5":
-                    exit=true;
-                    ConsoleView.showMenssage("exiting.....");
+                case "5": // Salir
+                    exit = true;
+                    consoleView.showMessage("Exiting.......");
                     break;
-
-
                 default:
-                ConsoleView.showMenssage("invaild option...");
-                    break;
+                    consoleView.showMessage("Invalid option.");
             }
         }
     }
-    private void addContact(){
-        string name= ConsoleView.getInput("enter name ");
-        string phone = ConsoleView.getInput("enter name  ..");
-        Contact<String,String> contact = new Contact<>(name,phone);
-        ContactManager.addContact(contact);
-        ConsoleView.showMenssage("contact added");
 
+    private void addContact() {
+        String name = consoleView.getInput("Name the contact: ");
+        String phone = consoleView.getInput("phone: ");
+        Contact<String, String> contact = new Contact<>(name, phone);
+        contactManager.addContact(contact);
+        consoleView.showMessage("Contact add.");
     }
-    private void ContactManager(){
-  
-    }
-}
 
+    private void findContact() {
+        String name = consoleView.getInput("Name the contact: ");
+        Contact<String, String> contact = contactManager.findContactByName(name);
+        if (contact != null) {
+            consoleView.showMessage("Contact find: " + contact);
+        } else {
+            consoleView.showMessage("Contact not find.");
+        }
+    }
+
+    private void deleteContact() {
+        String name = consoleView.getInput("Name contact to delete: ");
+        contactManager.deleteContactByName(name);
+        consoleView.showMessage("deleted contact");
+    }
 }
