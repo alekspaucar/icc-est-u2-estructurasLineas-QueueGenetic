@@ -8,6 +8,15 @@ import Models.Pantalla;
 public class App {
     public static void main(String[] args) {
 
+        runQueue();
+        runQueueGeneric();
+        runControllerMannager();
+    }
+    private static void runControllerMannager(){
+        MenuController menuController = new MenuController();
+        menuController.showMenu();
+    }
+
         System.out.println("");
         System.out.println("===============Estructuras Lineales==============");  
         runStack();
