@@ -19,19 +19,19 @@ public class MenuController {
             String option = consoleView.getInput("Choose the option: ");
     
             switch (option) {
-                case "1": // Agregar contacto
+                case "1": 
                     addContact();
                     break;
-                case "2": // Buscar contacto
+                case "2": 
                     findContact();
                     break;
-                case "3": // Eliminar contacto
+                case "3": 
                     deleteContact();
                     break;
-                case "4": // Mostrar lista
+                case "4": 
                     contactManager.printList();
                     break;
-                case "5": // Salir
+                case "5": 
                     exit = true;
                     consoleView.showMessage("Exiting.......");
                     break;
